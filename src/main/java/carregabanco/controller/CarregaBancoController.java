@@ -22,7 +22,6 @@ public class CarregaBancoController {
 				String[] data = linha.split(",");
 				AlunoModel aluno = new AlunoModel();
 				aluno.setCampus(data[0]);
-				aluno.setPolo(data[1]);
 				aluno.setCoordenacao(data[2]);
 				aluno.setCurso(data[3]);
 				aluno.setNome_estudante(data[4]);
@@ -35,6 +34,7 @@ public class CarregaBancoController {
 				valores.add(aluno);
 				linha = bf.readLine();
 			}
+			bf.close();
 		} catch (Exception e) {
 			System.out.println("Erro" + e.getMessage());
 		}

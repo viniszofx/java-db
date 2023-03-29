@@ -1,10 +1,11 @@
 package carregabanco;
 
-import carregabanco.view.CarregaBancoView;
+import carregabanco.view.AlunoView;
 
 public class CarregaBanco {
 	public static void main(String[] args) {
-		new CarregaBancoView();
+		new AlunoView();
+		//new CarregaBancoView();
 		//AlunoModel alunoModel = AlunoDao.getInstance().getById(1);    
 	}	
 }

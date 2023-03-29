@@ -20,6 +20,28 @@ public class AlunoModel extends PessoaModel implements Serializable {
 	private String situacao;
 	private String periodo_entrada;
 
+	public AlunoModel() {}
+	
+	public AlunoModel(String nome_estudante, String coordenacao, String curso, String situacao,
+			String periodo_entrada) {
+		super();
+		this.nome_estudante = nome_estudante;
+		this.coordenacao = coordenacao;
+		this.curso = curso;
+		this.situacao = situacao;
+		this.periodo_entrada = periodo_entrada;
+	}
+	
+	public AlunoModel(String nome_estudante, String coordenacao, String curso, String situacao,
+			String periodo_entrada, String campus, String polo, String email_institucional, int idade, String sexo) {
+		super(campus, polo, email_institucional, idade, sexo);
+		this.nome_estudante = nome_estudante;
+		this.coordenacao = coordenacao;
+		this.curso = curso;
+		this.situacao = situacao;
+		this.periodo_entrada = periodo_entrada;
+	}
+
 	public String getCoordenacao() {
 		return coordenacao;
 	}
