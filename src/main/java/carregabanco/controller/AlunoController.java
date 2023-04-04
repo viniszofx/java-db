@@ -12,13 +12,18 @@ public class AlunoController {
 		alunoDao.persist(aluno);
 	}
 	
+	public List<AlunoModel> buscar() {
+		AlunoDao alunoDao = AlunoDao.getInstance();
+		return alunoDao.findAll();
+	}
+	
 	public void removerPorID(Long id) {
 		AlunoDao alunoDao = AlunoDao.getInstance();
 		alunoDao.removeById(id);
 	}
 	
-	public List<AlunoModel> buscar() {
+	public void editar(AlunoModel aluno) {
 		AlunoDao alunoDao = AlunoDao.getInstance();
-		return alunoDao.findAll();
+		alunoDao.merge(aluno);;
 	}
 }
