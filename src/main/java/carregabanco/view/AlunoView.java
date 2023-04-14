@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import carregabanco.controller.AlunoController;
 import carregabanco.model.AlunoModel;
 
@@ -14,8 +16,8 @@ public class AlunoView {
 		Scanner leitura = new Scanner(System.in);
 		int opcao = 0;
         do {
-        	System.out.println("0. Sair\n1. Inserir\n2. Buscar Todos\n3. Remover por Id\n4. Alterar");
-            opcao = leitura.nextInt();
+        	String valor = JOptionPane.showInputDialog(null,"0. Sair\n1. Inserir\n2. Buscar Todos\n3. Remover por Id\n4. Alterar");
+            opcao = Integer.parseInt(valor);
         	switch (opcao) {
 			case 0:
 				System.out.println("Bye!!!");
@@ -30,7 +32,7 @@ public class AlunoView {
 				remover();
 				break;
 			default:
-				System.out.println("Opção Incorreta!");
+				System.out.println("Opï¿½ï¿½o Incorreta!");
 				break;
 			}
         }while(opcao != 0);
@@ -51,8 +53,7 @@ public class AlunoView {
 	private void inserir() {
 		Scanner leitura = new Scanner(System.in);
 		
-		System.out.println("Entre com o campus");
-		String campus = leitura.next();
+		String campus = JOptionPane.showInputDialog(null,"Entre com o nome do campus!");
 		
 		System.out.println("Entre com o polo");
 		String polo = leitura.next();
@@ -74,7 +75,7 @@ public class AlunoView {
 			System.out.println("Entre com o idade");
 			idade = leitura.nextInt();
 		} catch (InputMismatchException e) {
-			System.out.println("Entrou com o tipo de informação incorreta");
+			System.out.println("Entrou com o tipo de informaï¿½ï¿½o incorreta");
 		}
 		
 		System.out.println("Entre com o sexo");
