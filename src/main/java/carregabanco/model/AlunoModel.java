@@ -1,6 +1,5 @@
 package carregabanco.model;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -8,7 +7,7 @@ import javax.persistence.Table;
 @Entity
 @PrimaryKeyJoinColumn(name = "idPessoa")
 @Table(name = "aluno")
-public class AlunoModel extends PessoaModel implements Serializable {
+public class AlunoModel extends PessoaModel {
 	private static final long serialVersionUID = 1L;
 	//campus,polo,coordenacao,curso,nome_estudante,situacao,idade,sexo,email_institucional,periodo_entrada
 
