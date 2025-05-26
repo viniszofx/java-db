@@ -1,5 +1,6 @@
 package carregabanco.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,7 +14,7 @@ public class AlunoDao {
 	private static AlunoDao instance;
 	protected EntityManager entityManager;
 
-	private AlunoDao() {
+	public AlunoDao() {
 		entityManager = getEntityManager();
 	}
 
@@ -39,6 +40,23 @@ public class AlunoDao {
 	@SuppressWarnings("unchecked")
 	public List<AlunoModel> findAll() {
 		return entityManager.createQuery("FROM " + AlunoModel.class.getName()).getResultList();
+	}
+
+	public String inserirNoBanco(ArrayList<AlunoModel> listaDeAlunos) {
+		try {
+            entityManager.getTransaction().begin();
+			entityManager.createQuery("DELETE FROM " + AlunoModel.class.getName()).executeUpdate();
+           	for (AlunoModel aluno : listaDeAlunos) {
+				entityManager.persist(aluno);
+			}
+            entityManager.getTransaction().commit();
+			return "Inserido com sucesso!";
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            return "Erro ao atualizar a lista de alunos: " + e.getMessage();
+        }
 	}
 
 	public void persist(AlunoModel aluno) {
@@ -68,6 +86,17 @@ public class AlunoDao {
 			entityManager.getTransaction().begin();
 			aluno = entityManager.find(AlunoModel.class, aluno.getIdPessoa());
 			entityManager.remove(aluno);
+			entityManager.getTransaction().commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+	}
+
+	public void removeTodos() {
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.createQuery("DELETE FROM " + AlunoModel.class).executeUpdate();
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -19,29 +19,17 @@ public class PessoaModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPessoa;
-
-	private String campus;
-	private String polo;
-	private String email_institucional;
+	private String nome_estudante;
 	private int idade;
 	private String sexo;
 	
 	public PessoaModel() {}
 	
-	public PessoaModel(String campus, String polo, String email_institucional, int idade, String sexo) {
+	public PessoaModel(int idade, String sexo, String nome_estudante) {
 		super();
-		this.campus = campus;
-		this.polo = polo;
-		this.email_institucional = email_institucional;
+		this.nome_estudante = nome_estudante;
 		this.idade = idade;
 		this.sexo = sexo;
-	}
-	
-	public String getCampus() {
-		return campus;
-	}
-	public void setCampus(String campus) {
-		this.campus = campus;
 	}
 	
 	public int getIdade() {
@@ -56,25 +44,19 @@ public class PessoaModel implements Serializable{
 	public void setIdPessoa(long idPessoa) {
 		this.idPessoa = idPessoa;
 	}
-	
-	public String getEmail_institucional() {
-		return email_institucional;
+	public String getNome_estudante() {
+		return nome_estudante;
 	}
-	public void setEmail_institucional(String email_institucional) {
-		this.email_institucional = email_institucional;
+
+	public void setNome_estudante(String nome_estudante) {
+		this.nome_estudante = nome_estudante;
 	}
+
 	public String getSexo() {
 		return sexo;
 	}
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
-	}
-	public String getPolo() {
-		return polo;
-	}
-	public void setPolo(String polo) {
-		this.polo = polo;
-	}
-		
+	}	
 }
 

@@ -1,8 +1,6 @@
 package carregabanco.model;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -14,7 +12,9 @@ public class AlunoModel extends PessoaModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	//campus,polo,coordenacao,curso,nome_estudante,situacao,idade,sexo,email_institucional,periodo_entrada
 
-	private String nome_estudante;
+	private String campus;
+	private String polo;
+	private String email_institucional;
 	private String coordenacao;
 	private String curso;
 	private String situacao;
@@ -22,10 +22,12 @@ public class AlunoModel extends PessoaModel implements Serializable {
 
 	public AlunoModel() {}
 	
-	public AlunoModel(String nome_estudante, String coordenacao, String curso, String situacao,
-			String periodo_entrada) {
+	public AlunoModel(String coordenacao, String curso, String situacao,
+			String periodo_entrada, String campus, String polo, String email_institucional) {
 		super();
-		this.nome_estudante = nome_estudante;
+		this.campus = campus;
+		this.polo = polo;
+		this.email_institucional = email_institucional;
 		this.coordenacao = coordenacao;
 		this.curso = curso;
 		this.situacao = situacao;
@@ -34,12 +36,30 @@ public class AlunoModel extends PessoaModel implements Serializable {
 	
 	public AlunoModel(String nome_estudante, String coordenacao, String curso, String situacao,
 			String periodo_entrada, String campus, String polo, String email_institucional, int idade, String sexo) {
-		super(campus, polo, email_institucional, idade, sexo);
-		this.nome_estudante = nome_estudante;
+		super(idade, sexo, nome_estudante);
 		this.coordenacao = coordenacao;
 		this.curso = curso;
 		this.situacao = situacao;
 		this.periodo_entrada = periodo_entrada;
+	}
+
+	public String getCampus() {
+		return campus;
+	}
+	public void setCampus(String campus) {
+		this.campus = campus;
+	}
+	public String getPolo() {
+		return polo;
+	}
+	public void setPolo(String polo) {
+		this.polo = polo;
+	}
+	public String getEmail_institucional() {
+		return email_institucional;
+	}
+	public void setEmail_institucional(String email_institucional) {
+		this.email_institucional = email_institucional;
 	}
 
 	public String getCoordenacao() {
@@ -66,20 +86,16 @@ public class AlunoModel extends PessoaModel implements Serializable {
 		this.situacao = situacao;
 	}
 
-	public String getNome_estudante() {
-		return nome_estudante;
-	}
-
-	public void setNome_estudante(String nome_estudante) {
-		this.nome_estudante = nome_estudante;
-	}
-
 	public String getPeriodo_entrada() {
 		return periodo_entrada;
 	}
 
 	public void setPeriodo_entrada(String periodo_entrada) {
 		this.periodo_entrada = periodo_entrada;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
