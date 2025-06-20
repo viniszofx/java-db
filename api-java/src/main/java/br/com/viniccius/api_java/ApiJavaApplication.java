@@ -91,7 +91,7 @@ class PessoaController {
 		}
 	}
 
-	@PostMapping("/pessoas")
+	@PostMapping("/pessoa")
 	public ResponseEntity<?> createPessoa(@Valid @RequestBody PessoaModel pessoa) {
 		try {
 			PessoaModel savedPessoa = repository.save(pessoa);
