@@ -2,113 +2,102 @@ package br.com.viniccius.api_java.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "aluno")
-@PrimaryKeyJoinColumn(name = "idpessoa") // Changed from idPessoa to match database
-public class AlunoModel extends PessoaModel {
-  private static final long serialVersionUID = 1L;
+public class AlunoModel {
 
-  private String campus;
-  private String polo;
+    @Id
+    @Column(name = "idpessoa")
+    private Long idpessoa;
 
-  @Column(name = "email_institucional")
-  private String emailInstitucional;
+    @NotBlank(message = "O campus é obrigatório")
+    private String campus;
 
-  private String coordenacao;
-  private String curso;
-  private String situacao;
+    private String polo;
 
-  @Column(name = "periodo_entrada")
-  private String periodoEntrada;
+    @NotBlank(message = "O email institucional é obrigatório")
+    @Email(message = "Email institucional inválido")
+    @Column(name = "email_institucional")
+    private String email_institucional;
 
-  public AlunoModel() {
-  }
+    private String coordenacao;
 
-  public AlunoModel(String coordenacao, String curso, String situacao,
-      String periodo_entrada, String campus, String polo, String email_institucional) {
-    super();
-    this.campus = campus;
-    this.polo = polo;
-    this.emailInstitucional = email_institucional;
-    this.coordenacao = coordenacao;
-    this.curso = curso;
-    this.situacao = situacao;
-    this.periodoEntrada = periodo_entrada;
-  }
+    @NotBlank(message = "O curso é obrigatório")
+    private String curso;
 
-  public AlunoModel(String nome_estudante, String coordenacao, String curso, String situacao,
-      String periodo_entrada, String campus, String polo, String email_institucional, int idade, String sexo) {
-    super(idade, sexo, nome_estudante);
-    this.coordenacao = coordenacao;
-    this.curso = curso;
-    this.situacao = situacao;
-    this.periodoEntrada = periodo_entrada;
-    this.campus = campus;
-    this.polo = polo;
-    this.emailInstitucional = email_institucional;
-  }
+    private String situacao;
 
-  // Getters and Setters
-  public String getCampus() {
-    return campus;
-  }
+    @NotBlank(message = "O período de entrada é obrigatório")
+    @Column(name = "periodo_entrada")
+    private String periodo_entrada;
 
-  public void setCampus(String campus) {
-    this.campus = campus;
-  }
+    // Getters and Setters
+    public Long getIdpessoa() {
+        return idpessoa;
+    }
 
-  public String getPolo() {
-    return polo;
-  }
+    public void setIdpessoa(Long idpessoa) {
+        this.idpessoa = idpessoa;
+    }
 
-  public void setPolo(String polo) {
-    this.polo = polo;
-  }
+    public String getCampus() {
+        return campus;
+    }
 
-  public String getEmailInstitucional() {
-    return emailInstitucional;
-  }
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
 
-  public void setEmailInstitucional(String emailInstitucional) {
-    this.emailInstitucional = emailInstitucional;
-  }
+    public String getPolo() {
+        return polo;
+    }
 
-  public String getCoordenacao() {
-    return coordenacao;
-  }
+    public void setPolo(String polo) {
+        this.polo = polo;
+    }
 
-  public void setCoordenacao(String coordenacao) {
-    this.coordenacao = coordenacao;
-  }
+    public String getEmail_institucional() {
+        return email_institucional;
+    }
 
-  public String getCurso() {
-    return curso;
-  }
+    public void setEmail_institucional(String email_institucional) {
+        this.email_institucional = email_institucional;
+    }
 
-  public void setCurso(String curso) {
-    this.curso = curso;
-  }
+    public String getCoordenacao() {
+        return coordenacao;
+    }
 
-  public String getSituacao() {
-    return situacao;
-  }
+    public void setCoordenacao(String coordenacao) {
+        this.coordenacao = coordenacao;
+    }
 
-  public void setSituacao(String situacao) {
-    this.situacao = situacao;
-  }
+    public String getCurso() {
+        return curso;
+    }
 
-  public String getPeriodoEntrada() {
-    return periodoEntrada;
-  }
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
 
-  public void setPeriodoEntrada(String periodoEntrada) {
-    this.periodoEntrada = periodoEntrada;
-  }
+    public String getSituacao() {
+        return situacao;
+    }
 
-  public static long getSerialversionuid() {
-    return serialVersionUID;
-  }
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public String getPeriodo_entrada() {
+        return periodo_entrada;
+    }
+
+    public void setPeriodo_entrada(String periodo_entrada) {
+        this.periodo_entrada = periodo_entrada;
+    }
 }
